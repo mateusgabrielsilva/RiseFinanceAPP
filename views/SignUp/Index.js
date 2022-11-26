@@ -14,6 +14,7 @@ export default function SignUp({navigation}) {
   const [isSelected, setSelected] = useState(true)
   const [errorEmail, setErrorEmail] = useState(null)
   const [errorName, setErrorName] = useState(null)
+  const [message,setMessage]=useState(null);
 
   //Pegar data e hora local 
   //const hour = new Date().toLocaleString();
@@ -35,6 +36,14 @@ export default function SignUp({navigation}) {
               emailUser: email
           })
       }); 
+      let ress = await reqs.json();
+      setMessage(ress);
+      setTimeout(()=>{
+      setMessage(null);
+      },2000);
+      setTimeout(()=>{
+        navigation.navigate('Login');
+      },4000);
   }
   
   // Chamando pagina Login
@@ -62,6 +71,10 @@ export default function SignUp({navigation}) {
       <Text h3 style={loginStyles.titleText}>Sign Up</Text>
 
       <View style={loginStyles.containerApp}>
+
+        {message && (
+          <Text style={loginStyles.returnMessage}>{message}</Text>
+        )}
 
         <Input
           placeholder="Nome"

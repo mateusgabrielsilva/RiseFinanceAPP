@@ -19,6 +19,9 @@ const loginStyles = StyleSheet.create({
     color: '#f2f2f2',
     marginBottom: 80,
   },
+  returnMessage: {
+    color: '#00FF00',
+  },
   nameInput: {
     color: '#BCBCAF',
     marginLeft: 10,
